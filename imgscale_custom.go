@@ -22,7 +22,7 @@ func main() {
 	)
 
 	flag.StringVar(&host, "h", "127.0.0.1", "Host to listen on")
-	flag.IntVar(&port, "p", 8080, "Port number to listen on")
+	flag.IntVar(&port, "p", 9999, "Port number to listen on")
 	flag.StringVar(&configPath, "c", "./config/formats.json", "Path to configurations")
 	flag.Parse()
 
