@@ -1,0 +1,70 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          sibox
+# Required-Start:    $local_fs $remote_fs $network $syslog
+# Required-Stop:     $local_fs $remote_fs $network $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start/stop node servers batch script
+### END INIT INFO
+
+APP_HOME=/home/vanng822/git/imgscale
+SUDO_AS_USER="sudo -H -u vanng822"
+PIDFILE=$APP_HOME/imgscale.pid
+$CMD=$APP_HOME/bin/imgscale
+
+cleanup_pid() {
+        echo "clean up"
+}
+
+stop_server() {
+	echo "Stop imgscale server"
+	PID=$(cat $PIDFILE)
+	$SUDO_AS_USER kill $PID > /dev/null 2&>1&
+	echo "Imgscale server stopped!"
+}
+
+start_server() {
+	echo "Start server"
+    cd $APP_HOME
+   	$SUDO_AS_USER god --pidfile $PIDFILE -s $CMD > /dev/null 2&>1&
+    echo "Server started"
+}
+
+reload_server() {
+	echo "Reload server"
+	PID=$(cat $PID_FILE)
+	$SUDO_AS_USER kill -s USR2 $PID
+    echo "Server reloaded"
+}
+
+restart_server() {
+	echo "Restart server"
+	PID=$(cat $PID_FILE)
+	$SUDO_AS_USER kill -s HUP $PID
+    echo "Restart server done"
+}
+
+case "$1" in
+		force-restart)
+			stop_server
+			sleep 1
+			start_server
+			exit 0
+			;;
+		reload)
+			reload_server
+			exit 0
+			;;
+        start)
+            start_server
+            exit 0
+             ;;
+        stop)
+        	stop_server
+            exit 0
+             ;;
+        restart)
+        	restart_server
+        	exit 0
+esac
