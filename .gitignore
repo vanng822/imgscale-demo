@@ -1,5 +1,6 @@
 pkg
 src
 bin
+imgscale
 imgscale.pid
 .project
