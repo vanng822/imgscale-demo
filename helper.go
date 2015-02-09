@@ -28,7 +28,7 @@ func indexHandler(res http.ResponseWriter, req *http.Request) string {
 				<head>
 				</head>
 				<body>
-					<div>
+					<div style="text-align: center;">
 					<p>
 						Demo server for https://github.com/vanng822/imgscale
 					</p>
