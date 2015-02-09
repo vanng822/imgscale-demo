@@ -26,23 +26,23 @@ stop_server() {
 
 start_server() {
 	echo "Start server"
-    	cd $APP_HOME
-   	$SUDO_AS_USER god --pidfile $PIDFILE -s $CMD > /dev/null 2>&1&
-    	echo "Server started"
+    cd $APP_HOME
+   	$SUDO_AS_USER god --pidfile $PID_FILE -s $CMD > /dev/null 2>&1&
+   	echo "Server started"
 }
 
 reload_server() {
 	echo "Reload server"
 	PID=$(cat $PID_FILE)
 	$SUDO_AS_USER kill -s USR2 $PID  > /dev/null 2>&1&
-    	echo "Server reloaded"
+	echo "Server reloaded"
 }
 
 restart_server() {
 	echo "Restart server"
 	PID=$(cat $PID_FILE)
 	$SUDO_AS_USER kill -s HUP $PID  > /dev/null 2>&1&
-    	echo "Restart server done"
+	echo "Restart server done"
 }
 
 case "$1" in
