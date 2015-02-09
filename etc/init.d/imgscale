@@ -10,8 +10,8 @@
 
 APP_HOME=/home/vanng822/git/imgscale
 SUDO_AS_USER="sudo -H -u vanng822"
-PIDFILE=$APP_HOME/imgscale.pid
-$CMD=$APP_HOME/bin/imgscale
+PID_FILE=$APP_HOME/imgscale.pid
+CMD=$APP_HOME/bin/imgscale
 
 cleanup_pid() {
         echo "clean up"
@@ -19,30 +19,30 @@ cleanup_pid() {
 
 stop_server() {
 	echo "Stop imgscale server"
-	PID=$(cat $PIDFILE)
-	$SUDO_AS_USER kill $PID > /dev/null 2&>1&
+	PID=$(cat $PID_FILE)
+	$SUDO_AS_USER kill $PID > /dev/null 2>&1&
 	echo "Imgscale server stopped!"
 }
 
 start_server() {
 	echo "Start server"
-    cd $APP_HOME
-   	$SUDO_AS_USER god --pidfile $PIDFILE -s $CMD > /dev/null 2&>1&
-    echo "Server started"
+    	cd $APP_HOME
+   	$SUDO_AS_USER god --pidfile $PIDFILE -s $CMD > /dev/null 2>&1&
+    	echo "Server started"
 }
 
 reload_server() {
 	echo "Reload server"
 	PID=$(cat $PID_FILE)
-	$SUDO_AS_USER kill -s USR2 $PID
-    echo "Server reloaded"
+	$SUDO_AS_USER kill -s USR2 $PID  > /dev/null 2>&1&
+    	echo "Server reloaded"
 }
 
 restart_server() {
 	echo "Restart server"
 	PID=$(cat $PID_FILE)
-	$SUDO_AS_USER kill -s HUP $PID
-    echo "Restart server done"
+	$SUDO_AS_USER kill -s HUP $PID  > /dev/null 2>&1&
+    	echo "Restart server done"
 }
 
 case "$1" in
