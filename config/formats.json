@@ -8,7 +8,7 @@
                 {"Prefix": "100x0", "Height": 100, "Ratio": 0.0, "Thumbnail": true, "Watermark": true},
                 {"Prefix": "originalx1", "Height": 0, "Ratio": 1.0, "Thumbnail": false, "Watermark": false, "Strip": true, "Quality": 85},
                 {"Prefix": "original", "Height": 0, "Ratio": 0.0, "Thumbnail": false, "Watermark": false},
-                {"Prefix": "originalQ", "Height": 0, "Ratio": 0.0, "Thumbnail": false, "Watermark": false, "Strip": true, "Quality": 90},
+                {"Prefix": "originalQ", "Height": 0, "Ratio": 0.0, "Thumbnail": false, "Watermark": false, "Strip": true, "Quality": 85},
                 {"Prefix": "0x360", "Height": 360, "Ratio": 0.0, "Thumbnail": false, "Watermark": false},
                 {"Prefix": "0x170", "Height": 170, "Ratio": 0.0, "Thumbnail": false, "Watermark": false}
         ],
