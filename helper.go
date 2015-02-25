@@ -38,6 +38,14 @@ func indexHandler(res http.ResponseWriter, req *http.Request) string {
 						</a>
 					</p>
 					</div>
+					<script type="text/javascript">
+					var _webperfAccount = 'imgscale.isgoodness.com';
+					(function() {
+						var webperf = document.createElement('script'); webperf.type = 'text/javascript'; webperf.async = true;
+						webperf.src = 'http://webperf.isgoodness.com/webperf.js';
+						var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(webperf, s);
+					})();
+					</script>
 				</body>
 			</html>`
 }
