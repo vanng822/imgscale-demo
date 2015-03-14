@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/go-martini/martini"
 	"github.com/vanng822/imgscale/imgscale"
+	provider_http "github.com/vanng822/imgscale/provider/http"
 	"log"
 	"net/http"
 	"os"
@@ -31,7 +32,7 @@ func main() {
 	app := martini.Classic()
 	handler := imgscale.Configure(configPath)
 	defer handler.Cleanup()
-	handler.SetImageProvider(imgscale.NewImageProviderHTTP("http://imgscale.isgoodness.com/getimg/"))
+	handler.SetImageProvider(provider_http.New("http://imgscale.isgoodness.com/getimg/"))
 	app.Use(handler.ServeHTTP)
 	app.Get("/", indexHandler)
 	app.Get("/getimg/(?P<url>.+)", getimgHandler)
